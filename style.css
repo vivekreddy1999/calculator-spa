@@ -49,7 +49,7 @@ body {
         }
 
         #display {
-            width: 100%;
+            width: 95%;
             font-size: 2.5em;
             margin-bottom: 15px;
             text-align: right;
@@ -79,7 +79,7 @@ body {
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            color: rgb(0, 0, 0);
+            color: black;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
@@ -105,15 +105,82 @@ body {
             transform: scale(0.95);
         }
 
-        /* Number buttons - Rainbow gradient */
-        button.number {
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+        /* Individual number button colors */
+        button.number-0 {
+            background: linear-gradient(135deg, #ff6b6b, #ff8a80);
+        }
+        button.number-0:hover {
+            background: linear-gradient(135deg, #ff5252, #ff6659);
         }
 
-        button.number:hover {
-            background: linear-gradient(135deg, #ff5252, #26d0ce, #2196f3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        button.number-1 {
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+        }
+        button.number-1:hover {
+            background: linear-gradient(135deg, #f57c00, #ff9800);
+        }
+
+        button.number-2 {
+            background: linear-gradient(135deg, #ffeb3b, #fff176);
+        }
+        button.number-2:hover {
+            background: linear-gradient(135deg, #fbc02d, #ffeb3b);
+        }
+
+        button.number-3 {
+            background: linear-gradient(135deg, #8bc34a, #aed581);
+        }
+        button.number-3:hover {
+            background: linear-gradient(135deg, #689f38, #8bc34a);
+        }
+
+        button.number-4 {
+            background: linear-gradient(135deg, #00bcd4, #4dd0e1);
+        }
+        button.number-4:hover {
+            background: linear-gradient(135deg, #0097a7, #00bcd4);
+        }
+
+        button.number-5 {
+            background: linear-gradient(135deg, #2196f3, #64b5f6);
+        }
+        button.number-5:hover {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+        }
+
+        button.number-6 {
+            background: linear-gradient(135deg, #3f51b5, #7986cb);
+        }
+        button.number-6:hover {
+            background: linear-gradient(135deg, #303f9f, #3f51b5);
+        }
+
+        button.number-7 {
+            background: linear-gradient(135deg, #9c27b0, #ba68c8);
+        }
+        button.number-7:hover {
+            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+        }
+
+        button.number-8 {
+            background: linear-gradient(135deg, #e91e63, #f06292);
+        }
+        button.number-8:hover {
+            background: linear-gradient(135deg, #c2185b, #e91e63);
+        }
+
+        button.number-9 {
+            background: linear-gradient(135deg, #ff5722, #ff8a65);
+        }
+        button.number-9:hover {
+            background: linear-gradient(135deg, #d84315, #ff5722);
+        }
+
+        button.number-dot {
+            background: linear-gradient(135deg, #607d8b, #90a4ae);
+        }
+        button.number-dot:hover {
+            background: linear-gradient(135deg, #455a64, #607d8b);
         }
 
         /* Operator buttons - Vibrant gradients */
