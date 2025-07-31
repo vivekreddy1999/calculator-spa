@@ -3,19 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <title>Calculator SPA</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="calculator">
-    <input type="text" id="display" readonly />
-    <div class="buttons">
-      <button>7</button><button>8</button><button>9</button><button>/</button>
-      <button>4</button><button>5</button><button>6</button><button>*</button>
-      <button>1</button><button>2</button><button>3</button><button>-</button>
-      <button>0</button><button>.</button><button>=</button><button>+</button>
-      <button id="clear">C</button>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button class="operator" onclick="appendToDisplay('*')">×</button>
+            <button class="operator" onclick="deleteLast()">⌫</button>
+            
+            <button class="number-7" onclick="appendToDisplay('7')">7</button>
+            <button class="number-8" onclick="appendToDisplay('8')">8</button>
+            <button class="number-9" onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            
+            <button class="number-4" onclick="appendToDisplay('4')">4</button>
+            <button class="number-5" onclick="appendToDisplay('5')">5</button>
+            <button class="number-6" onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            
+            <button class="number-1" onclick="appendToDisplay('1')">1</button>
+            <button class="number-2" onclick="appendToDisplay('2')">2</button>
+            <button class="number-3" onclick="appendToDisplay('3')">3</button>
+            <button class="equals" onclick="calculate()" rowspan="2">=</button>
+            
+            <button class="number-0" onclick="appendToDisplay('0')" colspan="2">0</button>
+            <button class="number-dot" onclick="appendToDisplay('.')">.</button>
+        </div>
     </div>
-  </div>
-  <script src="app.js"></script>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentInput = '';
+        let operator = '';
+        let previousInput = '';
+
+        function appendToDisplay(value) {
+            if (display.value === '0' && value !== '.') {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.value = '';
+            currentInput = '';
+            operator = '';
+            previousInput = '';
+        }
+
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                let result = display.value.replace('×', '*');
+                display.value = eval(result);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        // Add keyboard support
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9' || key === '.') {
+                appendToDisplay(key);
+            } else if (key === '+' || key === '-') {
+                appendToDisplay(key);
+            } else if (key === '*') {
+                appendToDisplay('*');
+            } else if (key === '/') {
+                event.preventDefault();
+                appendToDisplay('/');
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clearDisplay();
+            } else if (key === 'Backspace') {
+                deleteLast();
+            }
+        });
+    </script>
 </body>
 </html>
